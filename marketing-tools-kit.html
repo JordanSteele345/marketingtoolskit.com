@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketingToolsKit - 营销工具导航</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #f59e0b;
+            --dark-bg: #f8f9fa;
+            --light-bg: #ffffff;
+            --text-color: #333;
+            --light-text: #666;
+            --border-color: #eaeaea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light-bg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        .nav-links a {
+            margin-left: 15px;
+            font-weight: 500;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 30px 0;
+        }
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-card a {
+            display: block;
+            padding: 20px;
+            color: inherit;
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #f0f4f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+
+        .tool-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .tool-description {
+            font-size: 13px;
+            color: var(--light-text);
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-height: 3em;
+        }
+
+        .tool-link {
+            font-size: 12px;
+            color: var(--primary-color);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Category Tags */
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-tag {
+            padding: 6px 12px;
+            background-color: #e5e7eb;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-tag:hover, .category-tag.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            font-size: 16px;
+            color: var(--light-text);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-container {
+                width: 100%;
+                max-width: none;
+                margin: 15px 0;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-toolbox"></i>
+                    <span>MarketingToolsKit</span>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchBox" class="search-box" placeholder="搜索营销工具...">
+                </div>
+                <div class="nav-links">
+                    <a href="#" title="关于我们">关于</a>
+                    <a href="#" title="联系我们">联系</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="category-tags" id="categoryTags">
+            <div class="category-tag active" data-category="all">全部工具</div>
+            <!-- Category tags will be dynamically added here -->
+        </div>
+
+        <div id="toolsContainer">
+            <!-- Tool cards will be dynamically generated here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MarketingToolsKit - 为营销人员提供最佳工具导航</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tools data from CSV
+        const toolsData = [
+            { category: "SEO工具", name: "SEMRush", description: "提供强大而全面的一体化数字营销服务的工具", link: "https://www.semrush.com/" },
+            { category: "SEO工具", name: "ahrefs", description: "强大的SEO工具，可以分析关键词和外链等", link: "https://ahrefs.com/" },
+            { category: "SEO工具", name: "Built With", description: "查看对方网站用什么开发的，相关的技术名称", link: "https://builtwith.com/" },
+            { category: "SEO工具", name: "Wappalyzer", description: "查询竞品网站搭建的工具，适合新手", link: "https://www.wappalyzer.com/" },
+            { category: "SEO工具", name: "Waybackmachine", description: "回到过去，查看网站过去的样子", link: "https://web.archive.org/" },
+            { category: "SEO工具", name: "Scan WP", description: "谷歌插件，查看 WordPress 网站用了什么主题和插件", link: "https://chromewebstore.google.com/detail/scan-wp-wordpress-theme-a/jgepgcdhakjacecafilmhdnifekocmcl?utm_source=chrome-ntp-icon" },
+            { category: "SEO工具", name: "MOZ", description: "关键词工具，外链工具，竞争对手网站分析", link: "https://moz.com/free-seo-tools" },
+            { category: "SEO工具", name: "screamingfrog", description: "模拟搜索引擎爬虫 分析并审核你网站SEO的情况", link: "https://www.screamingfrog.co.uk/seo-spider/" },
+            { category: "SEO工具", name: "BuzzSumo", description: "内容分析，外链分析", link: "https://buzzsumo.com/" },
+            { category: "SEO工具", name: "DataStudio", description: "谷歌官方出品数据洞察工具，可以配合Analytics一起使用", link: "https://lookerstudio.google.com/" },
+            { category: "SEO工具", name: "Yoast", description: "Wordpress宇宙中最受欢迎的 SEO插件 没有之一", link: "https://yoast.com/" },
+            { category: "SEO工具", name: "Majestic", description: "强大的外链分析工具", link: "https://majestic.com/" },
+            { category: "SEO工具", name: "Ubersuggest", description: "免费一站式关键字建议内容建议及竞争分析工具", link: "https://neilpatel.com/ubersuggest/" },
+            { category: "关键词分析", name: "SpyFu", description: "竞争对手的SEO关键词和广告分析", link: "https://www.spyfu.com/" },
+            { category: "关键词分析", name: "Keywords Everywhere", description: "提供关键词SEO SEM各种指标", link: "https://keywordseverywhere.com/" },
+            { category: "关键词分析", name: "SEO Quake", description: "提供关键词SEO SEM各种指标", link: "https://www.seoquake.com/index.html" },
+            { category: "关键词分析", name: "KWFinder", description: "关键字研究和SERP分析，竞争对手关键词调研", link: "https://mangools.com/kwfinder/" },
+            { category: "关键词分析", name: "Google Keyword Planner", description: "Google官方出品的SEO关键词调研和分析工具", link: "https://business.google.com/us/ad-tools/keyword-planner/" },
+            { category: "竞对分析", name: "Similarweb", description: "强大的网站流量分析工具", link: "https://www.similarweb.com/" },
+            { category: "竞对分析", name: "SEMRush", description: "提供强大而全面的一体化数字营销服务的工具", link: "https://www.semrush.com/" },
+            { category: "竞对分析", name: "ahrefs", description: "强大的SEO工具，可以分析关键词和外链等", link: "https://ahrefs.com/" },
+            { category: "网红营销", name: "SOCIAL BLADE", description: "分析 Youtube、Ins、FB、Twitter等平台的红人数据", link: "https://socialblade.com/" },
+            { category: "网红营销", name: "influence.co", description: "红人分析和联系工具，可以用来找红人，分析红人，联系红人以及管理推广活动", link: "https://influence.co/" },
+            { category: "网红营销", name: "Brand24", description: "帮你找到在细分市场里的最受欢迎的红人，帮助您跟踪竞争对手", link: "https://brand24.com/" },
+            { category: "网红营销", name: "Noxinfluencer", description: "快速查看 Youtube红人排名，价格，粉丝数", link: "https://cn.noxinfluencer.com/" },
+            { category: "网红营销", name: "NeoReach", description: "一家领先的影响力营销平台", link: "https://neoreach.com/" },
+            { category: "网红营销", name: "Influence", description: "根据类别，地理位置，人口和其他因素找到相应的网红", link: "https://influence.co/" },
+            { category: "社媒营销", name: "Buffer", description: "一站式管理和分析各种社交渠道", link: "https://buffer.com/" },
+            { category: "社媒营销", name: "Hootsuite", description: "支持主流平台的账号管理，轻松地安排和管理社交媒体内容", link: "https://www.hootsuite.com/" },
+            { category: "社媒营销", name: "BuzzSumo", description: "帮你找到内容相关的最火的文章，内容营销工具", link: "https://app.buzzsumo.com/login" },
+            { category: "社媒营销", name: "Sendible", description: "很受欢迎的社交平台管理工具，定时发送", link: "https://www.sendible.com/" },
+            { category: "社媒营销", name: "Awario", description: "监测社交媒体数据的工具，可以最快了解到新的热门话题，是SNS营销的好帮手。", link: "https://awario.com/" },
+            { category: "社媒营销", name: "Later", description: "一款功能强大的社交媒体管理工具", link: "https://later.com/" },
+            { category: "社媒营销", name: "Meltwater", description: "Meltwater融文是全球领先的舆情监测公司和媒体智能系统提供商,20年服务经验,业务包含实时舆情监控系统、舆情分析、海外传播、出海营销、海外红人营销等。提供国内外-站式舆情监测与商情洞察服务。", link: "https://www.meltwater.cn/" },
+            { category: "社媒营销", name: "OneSight", description: "国人开发的海外社交媒体数据管理营销平台", link: "https://www.onesight.com/en/" },
+            { category: "EDM营销", name: "Klaviyo", description: "专业的电商邮件营销和短信营销工具", link: "https://www.klaviyo.com/" },
+            { category: "EDM营销", name: "Mailchimp", description: "很受欢迎的，丰富的 电子邮件内容营销平台", link: "https://mailchimp.com/" },
+            { category: "EDM营销", name: "Active Campaign", description: "电子邮件营销、营销自动化和 CRM 工具", link: "https://www.activecampaign.com/" },
+            { category: "EDM营销", name: "Mailerlite", description: "邮件管理设计发送工具", link: "https://www.mailerlite.com/" },
+            { category: "EDM营销", name: "SendGrid", description: "与开发人员和营销人员信任的电子邮件服务合作，以节省时间，可扩展性和交付专业知识", link: "https://sendgrid.com/en-us" },
+            { category: "EDM营销", name: "Omnisend", description: "易于使用的邮件营销，SMS和自动化平台，利用收入增长", link: "https://www.omnisend.com/" },
+            { category: "EDM营销", name: "ConstantContact", description: "国外备受信任的综合性邮件营销服务商之-", link: "https://www.constantcontact.com/global/home-page" },
+            { category: "EDM营销", name: "Brevo", description: "一个专为小型企业提供的营销自动化平台", link: "https://www.brevo.com/" },
+            { category: "ASO优化", name: "七麦数据", description: "国内专业的移动应用数据分析平台，覆盖App Store & Google Play双平台", link: "https://www.qimai.cn/" },
+            { category: "ASO优化", name: "点点数据", description: "专业移动应用/游戏数据分析平台", link: "https://www.diandian.com/" },
+            { category: "ASO优化", name: "Sensor Tower", description: "顶尖的移动应用、广告及受众分析工具", link: "https://sensortower-china.com/zh-cn" },
+            { category: "ASO优化", name: "Mobile Action", description: "专业的app数据分析工具，功能强大", link: "https://www.mobileaction.co/" },
+            { category: "ASO优化", name: "AppTweak", description: "应用商店app数据监控，竞对分析工具 ", link: "https://www.apptweak.com/en" },
+            { category: "ASO优化", name: "AppTopia", description: "专业的移动应用数据分析，收入预测，辅助公司商务决策", link: "https://apptopia.com/" }
+        ];
+
+        // Icons mapping for categories
+        const categoryIcons = {
+            "SEO工具": "fa-magnifying-glass",
+            "关键词分析": "fa-key",
+            "竞对分析": "fa-users-viewfinder",
+            "网红营销": "fa-user-tie",
+            "社媒营销": "fa-share-nodes",
+            "EDM营销": "fa-envelope",
+            "ASO优化": "fa-mobile-screen"
+        };
+
+        // Get unique categories
+        const categories = [...new Set(toolsData.map(tool => tool.category))];
+
+        // Add category tags
+        const categoryTagsContainer = document.getElementById('categoryTags');
+        categories.forEach(category => {
+            const categoryTag = document.createElement('div');
+            categoryTag.className = 'category-tag';
+            categoryTag.setAttribute('data-category', category);
+            categoryTag.textContent = category;
+            categoryTagsContainer.appendChild(categoryTag);
+        });
+
+        // Generate tool cards by category
+        const toolsContainer = document.getElementById('toolsContainer');
+        
+        function renderTools(filteredTools = toolsData) {
+            toolsContainer.innerHTML = '';
+            
+            if (filteredTools.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = '没有找到匹配的工具 😢';
+                toolsContainer.appendChild(noResults);
+                return;
+            }
+
+            // Group tools by category
+            const toolsByCategory = {};
+            filteredTools.forEach(tool => {
+                if (!toolsByCategory[tool.category]) {
+                    toolsByCategory[tool.category] = [];
+                }
+                toolsByCategory[tool.category].push(tool);
+            });
+
+            // Render tools by category
+            Object.keys(toolsByCategory).forEach(category => {
+                const categorySection = document.createElement('div');
+                categorySection.className = 'category-section';
+                
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.className = 'category-title';
+                categoryTitle.textContent = category;
+                categorySection.appendChild(categoryTitle);
+                
+                const toolsGrid = document.createElement('div');
+                toolsGrid.className = 'tools-grid';
+                
+                toolsByCategory[category].forEach(tool => {
+                    const toolCard = document.createElement('div');
+                    toolCard.className = 'tool-card';
+                    
+                    const link = document.createElement('a');
+                    link.href = tool.link;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    
+                    const toolHeader = document.createElement('div');
+                    toolHeader.className = 'tool-header';
+                    
+                    const toolIcon = document.createElement('div');
+                    toolIcon.className = 'tool-icon';
+                    const icon = document.createElement('i');
+                    icon.className = `fas ${categoryIcons[tool.category] || 'fa-tools'}`;
+                    toolIcon.appendChild(icon);
+                    
+                    const toolName = document.createElement('div');
+                    toolName.className = 'tool-name';
+                    toolName.textContent = tool.name;
+                    
+                    toolHeader.appendChild(toolIcon);
+                    toolHeader.appendChild(toolName);
+                    
+                    const toolDescription = document.createElement('div');
+                    toolDescription.className = 'tool-description';
+                    toolDescription.textContent = tool.description;
+                    
+                    const toolLink = document.createElement('div');
+                    toolLink.className = 'tool-link';
+                    toolLink.textContent = tool.link;
+                    
+                    link.appendChild(toolHeader);
+                    link.appendChild(toolDescription);
+                    link.appendChild(toolLink);
+                    
+                    toolCard.appendChild(link);
+                    toolsGrid.appendChild(toolCard);
+                });
+                
+                categorySection.appendChild(toolsGrid);
+                toolsContainer.appendChild(categorySection);
+            });
+        }
+
+        // Initial render
+        renderTools();
+
+        // Search functionality
+        const searchBox = document.getElementById('searchBox');
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                // Reset category tag selection
+                document.querySelectorAll('.category-tag').forEach(tag => {
+                    tag.classList.remove('active');
+                });
+                document.querySelector('[data-category="all"]').classList.add('active');
+                
+                renderTools();
+                return;
+            }
+            
+            const filteredTools = toolsData.filter(tool => 
+                tool.name.toLowerCase().includes(searchTerm) || 
+                tool.description.toLowerCase().includes(searchTerm) ||
+                tool.category.toLowerCase().includes(searchTerm)
+            );
+            
+            renderTools(filteredTools);
+        });
+
+        // Category filter functionality
+        document.querySelectorAll('.category-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Clear search
+                searchBox.value = '';
+                
+                // Update active class
+                document.querySelectorAll('.category-tag').forEach(t => {
+                    t.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                if (category === 'all') {
+                    renderTools();
+                } else {
+                    const filteredTools = toolsData.filter(tool => tool.category === category);
+                    renderTools(filteredTools);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
