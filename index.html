@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketingToolsKit - 营销工具导航</title>
+    <title>MarketingToolsKit - Marketing Tools Navigation</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYNLXK19NQ"></script>
     <script>
@@ -28,7 +28,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'Arial', 'Helvetica', sans-serif;
         }
 
         body {
@@ -263,11 +263,11 @@
                     <span>MarketingToolsKit</span>
                 </div>
                 <div class="search-container">
-                    <input type="text" id="searchBox" class="search-box" placeholder="搜索营销工具...">
+                    <input type="text" id="searchBox" class="search-box" placeholder="Search marketing tools...">
                 </div>
                 <div class="nav-links">
-                    <a href="#" title="关于我们">关于</a>
-                    <a href="#" title="联系我们">联系</a>
+                    <a href="#" title="About Us">About</a>
+                    <a href="#" title="Contact Us">Contact</a>
                 </div>
             </div>
         </div>
@@ -275,7 +275,7 @@
 
     <main class="container">
         <div class="category-tags" id="categoryTags">
-            <div class="category-tag active" data-category="all">全部工具</div>
+            <div class="category-tag active" data-category="all">All Tools</div>
             <!-- Category tags will be dynamically added here -->
         </div>
 
@@ -286,73 +286,80 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 MarketingToolsKit - 为营销人员提供最佳工具导航</p>
+            <p>&copy; 2025 MarketingToolsKit - Best Tool Navigation for Marketers</p>
         </div>
     </footer>
 
     <script>
         // Tools data from CSV
         const toolsData = [
-            { category: "SEO工具", name: "SEMRush", description: "提供强大而全面的一体化数字营销服务的工具", link: "https://www.semrush.com/" },
-            { category: "SEO工具", name: "ahrefs", description: "强大的SEO工具，可以分析关键词和外链等", link: "https://ahrefs.com/" },
-            { category: "SEO工具", name: "Built With", description: "查看对方网站用什么开发的，相关的技术名称", link: "https://builtwith.com/" },
-            { category: "SEO工具", name: "Wappalyzer", description: "查询竞品网站搭建的工具，适合新手", link: "https://www.wappalyzer.com/" },
-            { category: "SEO工具", name: "Waybackmachine", description: "回到过去，查看网站过去的样子", link: "https://web.archive.org/" },
-            { category: "SEO工具", name: "Scan WP", description: "谷歌插件，查看 WordPress 网站用了什么主题和插件", link: "https://chromewebstore.google.com/detail/scan-wp-wordpress-theme-a/jgepgcdhakjacecafilmhdnifekocmcl?utm_source=chrome-ntp-icon" },
-            { category: "SEO工具", name: "MOZ", description: "关键词工具，外链工具，竞争对手网站分析", link: "https://moz.com/free-seo-tools" },
-            { category: "SEO工具", name: "screamingfrog", description: "模拟搜索引擎爬虫 分析并审核你网站SEO的情况", link: "https://www.screamingfrog.co.uk/seo-spider/" },
-            { category: "SEO工具", name: "BuzzSumo", description: "内容分析，外链分析", link: "https://buzzsumo.com/" },
-            { category: "SEO工具", name: "DataStudio", description: "谷歌官方出品数据洞察工具，可以配合Analytics一起使用", link: "https://lookerstudio.google.com/" },
-            { category: "SEO工具", name: "Yoast", description: "Wordpress宇宙中最受欢迎的 SEO插件 没有之一", link: "https://yoast.com/" },
-            { category: "SEO工具", name: "Majestic", description: "强大的外链分析工具", link: "https://majestic.com/" },
-            { category: "SEO工具", name: "Ubersuggest", description: "免费一站式关键字建议内容建议及竞争分析工具", link: "https://neilpatel.com/ubersuggest/" },
-            { category: "关键词分析", name: "SpyFu", description: "竞争对手的SEO关键词和广告分析", link: "https://www.spyfu.com/" },
-            { category: "关键词分析", name: "Keywords Everywhere", description: "提供关键词SEO SEM各种指标", link: "https://keywordseverywhere.com/" },
-            { category: "关键词分析", name: "SEO Quake", description: "提供关键词SEO SEM各种指标", link: "https://www.seoquake.com/index.html" },
-            { category: "关键词分析", name: "KWFinder", description: "关键字研究和SERP分析，竞争对手关键词调研", link: "https://mangools.com/kwfinder/" },
-            { category: "关键词分析", name: "Google Keyword Planner", description: "Google官方出品的SEO关键词调研和分析工具", link: "https://business.google.com/us/ad-tools/keyword-planner/" },
-            { category: "竞对分析", name: "Similarweb", description: "强大的网站流量分析工具", link: "https://www.similarweb.com/" },
-            { category: "竞对分析", name: "SEMRush", description: "提供强大而全面的一体化数字营销服务的工具", link: "https://www.semrush.com/" },
-            { category: "竞对分析", name: "ahrefs", description: "强大的SEO工具，可以分析关键词和外链等", link: "https://ahrefs.com/" },
-            { category: "网红营销", name: "SOCIAL BLADE", description: "分析 Youtube、Ins、FB、Twitter等平台的红人数据", link: "https://socialblade.com/" },
-            { category: "网红营销", name: "influence.co", description: "红人分析和联系工具，可以用来找红人，分析红人，联系红人以及管理推广活动", link: "https://influence.co/" },
-            { category: "网红营销", name: "Brand24", description: "帮你找到在细分市场里的最受欢迎的红人，帮助您跟踪竞争对手", link: "https://brand24.com/" },
-            { category: "网红营销", name: "Noxinfluencer", description: "快速查看 Youtube红人排名，价格，粉丝数", link: "https://cn.noxinfluencer.com/" },
-            { category: "网红营销", name: "NeoReach", description: "一家领先的影响力营销平台", link: "https://neoreach.com/" },
-            { category: "网红营销", name: "Influence", description: "根据类别，地理位置，人口和其他因素找到相应的网红", link: "https://influence.co/" },
-            { category: "社媒营销", name: "Buffer", description: "一站式管理和分析各种社交渠道", link: "https://buffer.com/" },
-            { category: "社媒营销", name: "Hootsuite", description: "支持主流平台的账号管理，轻松地安排和管理社交媒体内容", link: "https://www.hootsuite.com/" },
-            { category: "社媒营销", name: "BuzzSumo", description: "帮你找到内容相关的最火的文章，内容营销工具", link: "https://app.buzzsumo.com/login" },
-            { category: "社媒营销", name: "Sendible", description: "很受欢迎的社交平台管理工具，定时发送", link: "https://www.sendible.com/" },
-            { category: "社媒营销", name: "Awario", description: "监测社交媒体数据的工具，可以最快了解到新的热门话题，是SNS营销的好帮手。", link: "https://awario.com/" },
-            { category: "社媒营销", name: "Later", description: "一款功能强大的社交媒体管理工具", link: "https://later.com/" },
-            { category: "社媒营销", name: "Meltwater", description: "Meltwater融文是全球领先的舆情监测公司和媒体智能系统提供商,20年服务经验,业务包含实时舆情监控系统、舆情分析、海外传播、出海营销、海外红人营销等。提供国内外-站式舆情监测与商情洞察服务。", link: "https://www.meltwater.cn/" },
-            { category: "社媒营销", name: "OneSight", description: "国人开发的海外社交媒体数据管理营销平台", link: "https://www.onesight.com/en/" },
-            { category: "EDM营销", name: "Klaviyo", description: "专业的电商邮件营销和短信营销工具", link: "https://www.klaviyo.com/" },
-            { category: "EDM营销", name: "Mailchimp", description: "很受欢迎的，丰富的 电子邮件内容营销平台", link: "https://mailchimp.com/" },
-            { category: "EDM营销", name: "Active Campaign", description: "电子邮件营销、营销自动化和 CRM 工具", link: "https://www.activecampaign.com/" },
-            { category: "EDM营销", name: "Mailerlite", description: "邮件管理设计发送工具", link: "https://www.mailerlite.com/" },
-            { category: "EDM营销", name: "SendGrid", description: "与开发人员和营销人员信任的电子邮件服务合作，以节省时间，可扩展性和交付专业知识", link: "https://sendgrid.com/en-us" },
-            { category: "EDM营销", name: "Omnisend", description: "易于使用的邮件营销，SMS和自动化平台，利用收入增长", link: "https://www.omnisend.com/" },
-            { category: "EDM营销", name: "ConstantContact", description: "国外备受信任的综合性邮件营销服务商之-", link: "https://www.constantcontact.com/global/home-page" },
-            { category: "EDM营销", name: "Brevo", description: "一个专为小型企业提供的营销自动化平台", link: "https://www.brevo.com/" },
-            { category: "ASO优化", name: "七麦数据", description: "国内专业的移动应用数据分析平台，覆盖App Store & Google Play双平台", link: "https://www.qimai.cn/" },
-            { category: "ASO优化", name: "点点数据", description: "专业移动应用/游戏数据分析平台", link: "https://www.diandian.com/" },
-            { category: "ASO优化", name: "Sensor Tower", description: "顶尖的移动应用、广告及受众分析工具", link: "https://sensortower-china.com/zh-cn" },
-            { category: "ASO优化", name: "Mobile Action", description: "专业的app数据分析工具，功能强大", link: "https://www.mobileaction.co/" },
-            { category: "ASO优化", name: "AppTweak", description: "应用商店app数据监控，竞对分析工具 ", link: "https://www.apptweak.com/en" },
-            { category: "ASO优化", name: "AppTopia", description: "专业的移动应用数据分析，收入预测，辅助公司商务决策", link: "https://apptopia.com/" }
+            { category: "SEO Tools", name: "SEMRush", description: "All-in-one SEO toolkit for keyword research, competitor analysis, and site audits.", link: "https://www.semrush.com/" },
+            { category: "SEO Tools", name: "ahrefs", description: "Powerful backlink checker and SEO analysis tool for tracking rankings and traffic.", link: "https://ahrefs.com/" },
+            { category: "SEO Tools", name: "Built With", description: "Discover what technologies any website is built with (CMS, frameworks, hosting).", link: "https://builtwith.com/" },
+            { category: "SEO Tools", name: "Wappalyzer", description: "Browser extension that identifies web technologies on visited sites.", link: "https://www.wappalyzer.com/" },
+            { category: "SEO Tools", name: "Waybackmachine", description: "Explore archived versions of websites to see how they've changed over time.", link: "https://web.archive.org/" },
+            { category: "SEO Tools", name: "Scan WP", description: "Chrome extension that reveals WordPress themes and plugins on any site.", link: "https://chromewebstore.google.com/detail/scan-wp-wordpress-theme-a/jgepgcdhakjacecafilmhdnifekocmcl?utm_source=chrome-ntp-icon" },
+            { category: "SEO Tools", name: "MOZ", description: "Essential SEO tools for keyword research, link building, and site optimization.", link: "https://moz.com/free-seo-tools" },
+            { category: "SEO Tools", name: "Screamingfrog", description: "Website crawler that audits SEO issues like broken links and missing metadata.", link: "https://www.screamingfrog.co.uk/seo-spider/" },
+            { category: "SEO Tools", name: "BuzzSumo", description: "Content research tool to find popular topics and analyze competitor performance.", link: "https://buzzsumo.com/" },
+            { category: "SEO Tools", name: "DataStudio", description: "Google's free dashboard tool to visualize and share analytics data.", link: "https://lookerstudio.google.com/" },
+            { category: "SEO Tools", name: "Yoast", description: "Must-have WordPress plugin for SEO optimization and content readability checks.", link: "https://yoast.com/" },
+            { category: "SEO Tools", name: "Majestic", description: "Comprehensive backlink analysis tool with detailed link profiling.", link: "https://majestic.com/" },
+            { category: "SEO Tools", name: "Ubersuggest", description: "Free keyword research tool that provides SEO and content ideas.", link: "https://neilpatel.com/ubersuggest/" },
+            
+            { category: "Keywords Analysis", name: "SpyFu", description: "Uncover competitors' most profitable keywords and ads across Google and Bing.", link: "https://www.spyfu.com/" },
+            { category: "Keywords Analysis", name: "Keywords Everywhere", description: "Displays keyword metrics (volume, CPC, competition) directly in your browser as you search.", link: "https://keywordseverywhere.com/" },
+            { category: "Keywords Analysis", name: "SEO Quake", description: "Browser extension that shows SEO metrics for any website or search result.", link: "https://www.seoquake.com/index.html" },
+            { category: "Keywords Analysis", name: "KWFinder", description: "User-friendly keyword research tool with long-tail suggestions and difficulty scores.", link: "https://mangools.com/kwfinder/" },
+            { category: "Keywords Analysis", name: "Google Keyword Planner", description: "Google Ads' free keyword tool for finding search volume and ad competition data.", link: "https://business.google.com/us/ad-tools/keyword-planner/" },
+            { category: "Keywords Analysis", name: "Ubersuggest", description: "Free keyword research tool that provides SEO and content ideas.", link: "https://neilpatel.com/ubersuggest/" },
+            
+            { category: "Competitor Analysis", name: "Similarweb", description: "Traffic intelligence platform revealing competitors' website visitors, sources, and engagement metrics.", link: "https://www.similarweb.com/" },
+            { category: "Competitor Analysis", name: "SEMRush", description: "Competitive research suite for analyzing rivals' keywords, ads, backlinks, and content strategies.", link: "https://www.semrush.com/" },
+            { category: "Competitor Analysis", name: "ahrefs", description: "Comprehensive competitor analysis tool tracking backlinks, organic search traffic, and keyword rankings.", link: "https://ahrefs.com/" },
+            
+            { category: "Influencer Marketing", name: "SOCIAL BLADE", description: "Track influencer audience growth, engagement rates, and estimated earnings across platforms.", link: "https://socialblade.com/" },
+            { category: "Influencer Marketing", name: "influence.co", description: "Discover and connect with authentic influencers through detailed creator profiles and campaign tools.", link: "https://influence.co/" },
+            { category: "Influencer Marketing", name: "Brand24", description: "Monitor brand mentions and identify relevant influencers discussing your industry in real-time.", link: "https://brand24.com/" },
+            { category: "Influencer Marketing", name: "Noxinfluencer", description: "Analyze YouTube/Instagram influencers' performance metrics and audience demographics.", link: "https://www.noxinfluencer.com/" },
+            { category: "Influencer Marketing", name: "NeoReach", description: "Enterprise-grade influencer discovery with AI-powered matching and campaign performance tracking.", link: "https://neoreach.com/" },
+            { category: "Influencer Marketing", name: "Influence", description: "Find micro-influencers by niche, location and audience quality for targeted collaborations.", link: "https://influence.co/" },
+            
+            { category: "Social Media Marketing", name: "Buffer", description: "Simple scheduling and analytics platform for publishing content across multiple social channels.", link: "https://buffer.com/" },
+            { category: "Social Media Marketing", name: "Hootsuite", description: "All-in-one social media management dashboard for scheduling, monitoring, and reporting.", link: "https://www.hootsuite.com/" },
+            { category: "Social Media Marketing", name: "BuzzSumo", description: "Discover high-performing content and track social engagement for any topic or competitor.", link: "https://app.buzzsumo.com/login" },
+            { category: "Social Media Marketing", name: "Sendible", description: "AI-powered social media management with client collaboration and reputation monitoring.", link: "https://www.sendible.com/" },
+            { category: "Social Media Marketing", name: "Awario", description: "Real-time social listening tool to track brand mentions and industry trends across networks.", link: "https://awario.com/" },
+            { category: "Social Media Marketing", name: "Later", description: "Visual content calendar specializing in Instagram scheduling and link-in-bio management.", link: "https://later.com/" },
+            { category: "Social Media Marketing", name: "Meltwater", description: "Enterprise social media monitoring with media intelligence and crisis management features.", link: "https://www.meltwater.cn/" },
+            { category: "Social Media Marketing", name: "OneSight", description: "Global social media management platform with cross-border performance analytics.", link: "https://www.onesight.com/en/" },
+            
+            { category: "Email Marketing", name: "Klaviyo", description: "Ecommerce-focused email and SMS platform with advanced segmentation and automation.", link: "https://www.klaviyo.com/" },
+            { category: "Email Marketing", name: "Mailchimp", description: "All-in-one marketing platform offering email automation, landing pages, and basic CRM.", link: "https://mailchimp.com/" },
+            { category: "Email Marketing", name: "Active Campaign", description: "Powerful email marketing combined with sales automation and CRM functionality.", link: "https://www.activecampaign.com/" },
+            { category: "Email Marketing", name: "Mailerlite", description: "Lightweight email marketing solution with intuitive drag-and-drop editor and automation.", link: "https://www.mailerlite.com/" },
+            { category: "Email Marketing", name: "SendGrid", description: "Transactional email API with robust deliverability tools for developers and marketers.", link: "https://sendgrid.com/en-us" },
+            { category: "Email Marketing", name: "Omnisend", description: "Multichannel marketing platform specializing in email + SMS automation for ecommerce.", link: "https://www.omnisend.com/" },
+            { category: "Email Marketing", name: "ConstantContact", description: "Beginner-friendly email marketing with event management and list-building tools.", link: "https://www.constantcontact.com/" },
+            { category: "Email Marketing", name: "Brevo", description: "Affordable all-in-one platform for email, SMS, chat and marketing automation.", link: "https://www.brevo.com/" },
+            
+            { category: "ASO Optimization", name: "Qimai Data", description: "Comprehensive ASO analytics for Chinese app stores with keyword tracking and competitive intelligence.", link: "https://www.qimai.cn/" },
+            { category: "ASO Optimization", name: "Diandian Data", description: "Real-time mobile app analytics platform specializing in Chinese and global store optimization.", link: "https://www.diandian.com/" },
+            { category: "ASO Optimization", name: "Sensor Tower", description: "Industry-standard ASO tool for app store keyword research, ranking tracking, and market insights.", link: "https://sensortower-china.com/zh-cn" },
+            { category: "ASO Optimization", name: "Mobile Action", description: "All-in-one ASO platform featuring keyword optimization, competitive analysis, and ad intelligence.", link: "https://www.mobileaction.co/" },
+            { category: "ASO Optimization", name: "AppTweak", description: "AI-powered ASO toolkit with keyword suggestions, metadata optimization, and performance tracking.", link: "https://www.apptweak.com/en" },
+            { category: "ASO Optimization", name: "AppTopia", description: "Mobile app intelligence platform with download estimates, revenue data, and store ranking analytics.", link: "https://apptopia.com/" }
         ];
 
         // Icons mapping for categories
         const categoryIcons = {
-            "SEO工具": "fa-magnifying-glass",
-            "关键词分析": "fa-key",
-            "竞对分析": "fa-users-viewfinder",
-            "网红营销": "fa-user-tie",
-            "社媒营销": "fa-share-nodes",
-            "EDM营销": "fa-envelope",
-            "ASO优化": "fa-mobile-screen"
+            "SEO Tools": "fa-magnifying-glass",
+            "Keywords Analysis": "fa-key",
+            "Competitor Analysis": "fa-users-viewfinder",
+            "Influencer Marketing": "fa-user-tie",
+            "Social Media Marketing": "fa-share-nodes",
+            "Email Marketing": "fa-envelope",
+            "ASO Optimization": "fa-mobile-screen"
         };
 
         // Get unique categories
@@ -377,7 +384,7 @@
             if (filteredTools.length === 0) {
                 const noResults = document.createElement('div');
                 noResults.className = 'no-results';
-                noResults.textContent = '没有找到匹配的工具 😢';
+                noResults.textContent = 'No matching tools found 😢';
                 toolsContainer.appendChild(noResults);
                 return;
             }
